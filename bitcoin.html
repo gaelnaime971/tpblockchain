@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IF - Bitcoin</title>
+    <meta name="description" content="Your Description Here">
+    <meta name="keywords" content="bootstrap themes, portfolio, responsive theme">
+    <meta name="author" content="ThemeForces.Com">
+    
+     <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+    <!-- Stylesheet
+    ================================================== -->
+    <link rel="stylesheet" type="text/css"  href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:500,600,700,100,800,900,400,200,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+    
+    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESILV Blockchain</title>
+<script>
+	function homePageLoading() 
+	{
+    url = 'https://bitcoin.mubiz.com/mininginfo';
+    elementID = "Format1";
+    fonctionRequeteApi(url, elementID);
+	url = 'https://bitcoin.mubiz.com/peerinfo';
+    elementID = 'Format2';
+	fonctionRequeteApi(url, elementID);
+	url = 'https://bitcoin.mubiz.com/blockchaininfo';
+    elementID = 'Format3';
+    fonctionRequeteApi(url, elementID);
+	url = 'https://bitcoin.mubiz.com/peerinfo';
+    elementID = 'Format4';
+	fonctionRequeteApi(url, elementID);
+	}
+	function fonctionRequeteApi(url, elementID)
+	{
+		var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function(lienurl)
+{
+    if (this.readyState == 4 && this.status == 200)
+	{
+        var myObj = this.responseText;
+        var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
+        document.getElementById(elementID).innerHTML = jsonPretty;
+    }
+};
+xmlhttp.open("GET", url , true);
+xmlhttp.send();
+	}
+	function RecupereURL()
+	{
+		var url = document.getElementById("TexteURL").value;
+		document.getElementById("affichageURL").innerHTML = "<p><strong>Resultat de la recherche pour l'URL suivant :</strong></p>" +fonctionRequeteApi(url, "API");
+	}
+</script>
+<script type="text/javascript">homePageLoading();</script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+    <div id="tf-home2">
+        <div class="overlay">
+            <div id="sticky-anchor"></div>
+            <nav id="tf-menu" class="navbar navbar-default">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand logo" href="index.html">- BITCOIN -</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#tf-home">ACCEUIL</a></li>
+                        <li><a href="#tf-service">QR-CODES</a></li>
+                        <li><a href="bitcoin.html">BITCOIN</a></li>
+                        <!--li><a href="#tf-about">About</a></li-->
+                        <!--li><a href="#tf-contact">Contact</a></li-->
+                        <!--li><a href="test.html">Contact</a></li-->
+                      </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+
+            <div class="container">
+                <div class="content">
+                    <h1>RÉCEPTION DE DONNÉES DU WEBSERVICE</h1>
+                    <h3>TP BLOCKCHAIN - NAIME Gaël & MOSBAH Sultan</h3>
+                    <br>
+                    <a href="explorer.html" class="btn btn-primary my-btn">Explorer</a>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+<body>
+
+
+<br>
+<div class="container"> 
+	<div class="col-lg-12 col-xs-6">
+    	<pre>
+        	<code id="Format1" class="json kljs"></code>
+        	<code id="Format2" class="json kljs"></code>
+        	<code id="Format3" class="json kljs"></code>
+        	<code id="Format4" class="json kljs"></code>
+    	</pre>
+	</div>
+</div>
+<!--  SECTION-1 -->
+
+<!-- FOOTER -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-offset-3 col-xs-12 col-lg-6"> </div>
+  </div>
+</div>
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p><p>2017 © Gaël NAIME. All Rights Reserved.</p> </p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- / FOOTER --> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../js/jquery-1.11.3.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ESILV Blockchain</title>
+
+<script>
+
+	//Recuperation URL + affichage resultat 
+	
+	function RecupereURL()
+	{
+		var url = document.getElementById("TexteURL").value;
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+       	 	var myObj = this.responseText;
+        	var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
+        	document.getElementById("demo").innerHTML = jsonPretty;
+    		}
+		};
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();	
+	}
+	function RecupereHash()
+	{
+		var hashVerifier =1;
+		var hash = document.getElementById("TexteHashTransaction").value;
+		var i=0;
+		for(i=0;i<7;i++)
+			{
+				if(hash[i] !=0)
+					{
+						hashVerifier = 0;
+					}
+			}
+		if(hashVerifier)
+		{
+			if(hash.length == 64)
+			{
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() 
+				{
+					if (this.readyState == 4 && this.status == 200) 
+					{
+						var myObj = this.responseText;
+						var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
+						document.getElementById("demo2").innerHTML = jsonPretty;
+					}
+				};
+				var requete = "http://bitcoin.mubiz.com/block_hash/";
+				requete += hash+"/";
+				xmlhttp.open("GET", requete, true);
+				xmlhttp.send();
+			}
+			else
+			{
+				document.getElementById("demo2").innerHTML = "Hash's lenght must be 64";
+			}
+			
+		}
+		else
+		{
+				document.getElementById("demo2").innerHTML = "Incorrect hash code ";
+		}
+		
+		
+	}
+	function RecupereIndex()
+	{
+		var indexVerifier =1;
+		var index = document.getElementById("TexteIndexBloc").value;
+		var i=0;
+		for(i=0;i<7;i++)
+		{
+			if(index[i] !=0)
+			{
+				indexVerifier = 0;
+			}
+		}
+		if(indexVerifier)
+		{
+			if(index.length == 64)
+			{
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() 
+				{
+					if (this.readyState == 4 && this.status == 200) 
+					{
+						var myObj = this.responseText;
+						var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
+						document.getElementById("demo3").innerHTML = jsonPretty;
+					}
+				};
+				var requete = "http://bitcoin.mubiz.com/block_index/";
+				requete += index+"/";
+				xmlhttp.open("GET", requete, true);
+				xmlhttp.send();
+			}
+			else
+			{
+				document.getElementById("demo3").innerHTML = "Index code's lenght must be 64";
+			}
+		}
+		else
+		{
+				document.getElementById("demo3").innerHTML = "Incorrect index code ";
+		}
+		
+		
+		
+	}
+	
+	
+</script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="../index.html">Esilv Blockchain TP</a> </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+		  <li class="active"><a href="#">Bitcoin <span class="sr-only">(current)</span></a> </li>
+      </ul>
+     
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+
+<!-- HEADER -->
+<!-- / HEADER --> 
+<!--  SECTION-1 -->
+
+
+
+<div class="well">
+	<div class="row">
+	  <div class="col-md-4">
+	    <div class="form-group">
+	      <label for="textURL"><strong>URL :</strong></label>
+	      <input type ="url" class="form-control" id="TexteURL" placeholder="URL Mubiz">
+        </div>
+	  </div>
+	  <div class="col-md-4">
+	    <div class="form-group">
+	      <label for="textURL2"><strong>Hash Transaction :</strong></label>
+	      <input type ="url" class="form-control" id="TexteHashTransaction" placeholder="Hash">
+        </div>
+      </div>
+	  <div class="col-md-4">
+	    <div class="form-group">
+	      <label for="textURL3"><strong>Index Bloc :</strong></label>
+	      <input type ="url" class="form-control" id="TexteIndexBloc" placeholder="Index">
+        </div>
+      </div>
+	  <div class="col-md-4">
+	    <button type="button" class="btn btn-default col-md-offset-4" onClick="RecupereURL()">Valider</button>
+	  </div>
+	  <div class="col-md-4">
+	    <button type="button" class="btn btn-default col-md-offset-4" onClick="RecupereHash()">Valider</button>
+      </div>
+	  <div class="col-md-4">
+	    <button type="button" class="btn btn-default col-md-offset-4" onClick="RecupereIndex()">Valider</button>
+      </div>
+	  <div class="col-md-4"></div>
+  </div>
+</div>
+<div class="well">
+  <div class="row">
+    <div class="col-md-4">
+      <strong>URL :</strong>
+      <pre>
+      <code id="demo" class="json kljs"></code>
+      </pre>
+</div>
+    <div class="col-md-4"> <strong>Hash Transaction :</strong>
+      <pre>
+      <code id="demo2" class="json kljs"></code>
+      </pre>
+    </div>
+    <div class="col-md-4"> <strong>Index Bloc :</strong>
+      <pre>
+      <code id="demo3" class="json kljs"></code>
+      </pre>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+  </div>
+  
+</div>
+
+<!-- FOOTER -->
+
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Copyright © MyWebsite. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- / FOOTER --> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../../js/jquery-1.11.3.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../../js/bootstrap.js"></script>
+</body>
+</html>
